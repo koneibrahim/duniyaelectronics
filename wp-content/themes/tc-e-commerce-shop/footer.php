@@ -21,15 +21,15 @@
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <?php dynamic_sidebar('footer-4');?>
-                </div>
+                </div>        
             </div>
         </div>
     </div>
     <div id="footer" class="copyright-wrapper">
     	<div class="container">
             <div class="copyright">
-               <p>  Create by HERESIRA  Copyright  Star.com</p>
-            </div><div class="clear"></div>
+                <p><?php echo esc_html(get_theme_mod('tc_e_commerce_shop_footer_copy',__('Ecommerce WordPress Theme By','tc-e-commerce-shop'))); ?> <?php echo esc_html(tc_e_commerce_shop_credit_link(),'tc-e-commerce-shop'); ?></p>
+            </div><div class="clear"></div>  
         </div>
     </div>
     <?php wp_footer(); ?>

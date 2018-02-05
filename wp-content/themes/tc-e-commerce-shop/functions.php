@@ -17,27 +17,6 @@ if ( ! function_exists( 'tc_e_commerce_shop_setup' ) ) :
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
- 
-/* Breadcrumb Begin */
-function tc_e_commerce_shop_the_breadcrumb() {
-	if (!is_home()) {
-		echo '<a href="';
-			echo esc_url( home_url() );
-		echo '">';
-			bloginfo('name');
-		echo "</a> ";
-		if (is_category() || is_single()) {
-			the_category('title_li=');
-			if (is_single()) {
-				echo "<span> ";
-					the_title();
-				echo "</span> ";
-			}
-		} elseif (is_page()) {
-			the_title();
-		}
-	}
-}
 
 /* Theme Setup */
 function tc_e_commerce_shop_setup() {
@@ -237,6 +216,13 @@ add_action( 'wp_enqueue_scripts', 'tc_e_commerce_shop_scripts' );
     }
 }
 
+// URL DEFINES
+define('TC_E_COMMERCE_SHOP_SITE_URL','https://www.themescaliber.com/');
+
+function tc_e_commerce_shop_credit_link() {
+        echo "<a href=".esc_url(TC_E_COMMERCE_SHOP_SITE_URL)." target='_blank'>ThemesCaliber</a>";
+}
+
 /* Custom template tags for this theme. */
 require get_template_directory() . '/inc/template-tags.php';
 
@@ -245,31 +231,3 @@ require get_template_directory() . '/inc/custom-header.php';
 
 /* Customizer additions. */
 require get_template_directory() . '/inc/customizer.php';
-
-// URL DEFINES
-define('TC_E_COMMERCE_SHOP_SITE_URL','https://www.themescaliber.com/');
-
-function tc_e_commerce_shop_credit_link() {
-        echo "<a href=".esc_url(TC_E_COMMERCE_SHOP_SITE_URL)." target='_blank'>ThemesCaliber</a>";
-}
-// URL DEFINES
-define('TC_E_COMMERCE_SHOP_SITE_URL1','https://www.themescaliber.com/premium/multipurpose-ecommerce-wordpress-theme');
-
-function tc_e_commerce_shop_credit_link1() {
-        echo "<a href=".esc_url(TC_E_COMMERCE_SHOP_SITE_URL1)." target='_blank'>Ecommerce WordPress Theme</a>";
-}
-
-// mailing Function
-
-	if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
-	// do your stuff
-	$url = get_site_url();
-	// The message
-	$message = "A Free Ecommerce Theme is activated on $url ";
-
-	// In case any of our lines are larger than 70 characters, we should use wordwrap()
-	$message = wordwrap($message, 70, "\r\n");
-
-	// Send
-	wp_mail('themescaliber@gmail.com', 'Theme Activated', $message);
-}

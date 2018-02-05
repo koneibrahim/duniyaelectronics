@@ -40,6 +40,24 @@ function adrotate_shortcode($atts, $content = null) {
 		}
 	
 		$output .= '<!-- /mfunc '.W3TC_DYNAMIC_SECURITY.' -->';
+	} else if($adrotate_config['borlabscache'] == "Y") {
+	    if(class_exists('\Borlabs\Factory')) {
+            $borlabsphrase = \Borlabs\Factory::get('Cache\Config')->get('fragmentCachingMaskPhrase');
+
+			$output .= '<!--[borlabs cache start: '.$borlabsphrase.']-->';
+
+			if($banner_id > 0 AND ($group_ids == 0 OR $group_ids > 0)) { // Show one Ad
+				$output .= 'echo adrotate_ad('.$banner_id.', true, 0, 0);';
+			}
+		
+			if($banner_id == 0 AND $group_ids > 0) { // Show group
+				$output .= 'echo adrotate_group('.$group_ids.', 0, 0, 0);';
+			}
+
+			$output .= '<!--[borlabs cache end: '.$borlabsphrase.']-->';
+		} else {
+			$output .= '<!-- Borlabs Cache does not appear to be active -->';
+		}
 	} else {
 		if($banner_id > 0 AND ($group_ids == 0 OR $group_ids > 0)) { // Show one Ad
 			$output .= adrotate_ad($banner_id, true, 0, 0);
@@ -531,10 +549,7 @@ function adrotate_ad_is_in_groups($id) {
 
 /*-------------------------------------------------------------
  Name:      adrotate_hash
-
  Purpose:   Generate the adverts clicktracking hash
- Receive:   $ad, $group, $blog_id
- Return:    $result
  Since:		3.9.12
 -------------------------------------------------------------*/
 function adrotate_hash($ad, $group = 0, $blog_id = 0) {
@@ -555,10 +570,7 @@ function adrotate_hash($ad, $group = 0, $blog_id = 0) {
 
 /*-------------------------------------------------------------
  Name:      adrotate_get_remote_ip
-
  Purpose:   Get the remote IP from the visitor
- Receive:   -None-
- Return:    $buffer[0]
  Since:		3.6.2
 -------------------------------------------------------------*/
 function adrotate_get_remote_ip(){
@@ -573,11 +585,21 @@ function adrotate_get_remote_ip(){
 }
 
 /*-------------------------------------------------------------
- Name:      adrotate_get_sorted_roles
+ Name:      adrotate_apply_jetpack_photon
+ Purpose:   Use Jetpack Photon if possible
+ Since:		4.11
+-------------------------------------------------------------*/
+function adrotate_apply_jetpack_photon($image) {
+	if(function_exists('jetpack_photon_url')) {
+		return jetpack_photon_url($image);
+	} else {
+		return $image;
+	}
+}
 
+/*-------------------------------------------------------------
+ Name:      adrotate_get_sorted_roles
  Purpose:   Returns all roles and capabilities, sorted by user level. Lowest to highest.
- Receive:   -none-
- Return:    $sorted
  Since:		3.2
 -------------------------------------------------------------*/
 function adrotate_get_sorted_roles() {	
@@ -597,10 +619,7 @@ function adrotate_get_sorted_roles() {
 
 /*-------------------------------------------------------------
  Name:      adrotate_set_capability
-
  Purpose:   Grant or revoke capabilities to a role and all higher roles
- Receive:   $lowest_role, $capability
- Return:    -None-
  Since:		3.2
 -------------------------------------------------------------*/
 function adrotate_set_capability($lowest_role, $capability){
@@ -616,10 +635,7 @@ function adrotate_set_capability($lowest_role, $capability){
 
 /*-------------------------------------------------------------
  Name:      adrotate_remove_capability
-
  Purpose:   Remove the $capability from the all roles
- Receive:   $capability
- Return:    -None-
  Since:		3.2
 -------------------------------------------------------------*/
 function adrotate_remove_capability($capability){
@@ -633,10 +649,7 @@ function adrotate_remove_capability($capability){
 
 /*-------------------------------------------------------------
  Name:      adrotate_dashboard_scripts
-
  Purpose:   Load file uploaded popup
- Receive:   -None-
- Return:	-None-
  Since:		3.6
 -------------------------------------------------------------*/
 function adrotate_dashboard_scripts() {

@@ -54,7 +54,7 @@
 		$class = '';
 		foreach($active as $banner) {
 			$stats = adrotate_stats($banner['id']);
-			$stats_today = adrotate_stats($banner['id'], adrotate_date_start('day'));
+			$stats_today = adrotate_stats($banner['id'], false, adrotate_date_start('day'));
 			$grouplist = adrotate_ad_is_in_groups($banner['id']);
 
 			$ctr = adrotate_ctr($stats['clicks'], $stats['impressions']);						

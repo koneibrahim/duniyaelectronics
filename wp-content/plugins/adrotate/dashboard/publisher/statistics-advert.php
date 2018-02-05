@@ -13,7 +13,7 @@ $banner = $wpdb->get_row("SELECT `title`, `tracker`, `type` FROM `{$wpdb->prefix
 $schedules = $wpdb->get_results("SELECT `{$wpdb->prefix}adrotate_schedule`.`id`, `starttime`, `stoptime`, `maxclicks`, `maximpressions`, COUNT(`clicks`) as `clicks`, COUNT(`impressions`) as `impressions` FROM `{$wpdb->prefix}adrotate_schedule`, `{$wpdb->prefix}adrotate_linkmeta`, `{$wpdb->prefix}adrotate_stats` WHERE `{$wpdb->prefix}adrotate_linkmeta`.`ad` = '{$id}' AND `{$wpdb->prefix}adrotate_linkmeta`.`ad` = `{$wpdb->prefix}adrotate_stats`.`ad` AND `schedule` = `{$wpdb->prefix}adrotate_schedule`.`id` AND `thetime` > `starttime` AND `thetime` < `stoptime` ORDER BY `{$wpdb->prefix}adrotate_schedule`.`id` ASC;"); 
 
 $stats = adrotate_stats($id, false);
-$stats_today = adrotate_stats($id, false, adrotate_date_start('day'), null, 1);
+$stats_today = adrotate_stats($id, false, adrotate_date_start('day'));
 $stats_last_month = adrotate_stats($id, false, mktime(0, 0, 0, date("m")-1, 1, date("Y")), mktime(0, 0, 0, date("m"), 0, date("Y")));
 $stats_this_month = adrotate_stats($id, false, mktime(0, 0, 0, date("m"), 1, date("Y")), mktime(0, 0, 0, date("m"), date("t"), date("Y")));
 $stats_graph_month = adrotate_stats($id, false, $monthstart, $monthend);

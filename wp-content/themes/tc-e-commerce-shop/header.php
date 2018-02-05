@@ -39,22 +39,22 @@
   <div class="topbar">
     <div class="container">
       <div class="baricon">
-        <?php if(esc_url( get_theme_mod( 'tc_e_commerce_shop_mail','' ) ) != '') { ?>
+        <?php if( get_theme_mod( 'tc_e_commerce_shop_mail','' ) != '') { ?>
           <span class="email"><i class="fa fa-envelope" aria-hidden="true"></i><?php echo esc_html( get_theme_mod('tc_e_commerce_shop_mail',__('support@example.com','tc-e-commerce-shop')) ); ?></span>
         <?php } ?>
-        <?php if(esc_url( get_theme_mod( 'tc_e_commerce_shop_call','' ) ) != '') { ?>
+        <?php if( get_theme_mod( 'tc_e_commerce_shop_call','' ) != '') { ?>
           <span class="call"><i class="fa fa-phone" aria-hidden="true"></i><?php echo esc_html( get_theme_mod('tc_e_commerce_shop_call',__('(518) 356-5373','tc-e-commerce-shop') )); ?></span>
          <?php } ?>
-          <?php if(esc_url( get_theme_mod( 'tc_e_commerce_shop_youtube_url','' ) ) != '') { ?>
+          <?php if( get_theme_mod( 'tc_e_commerce_shop_youtube_url','' ) != '') { ?>
             <a href="<?php echo esc_url( get_theme_mod( 'tc_e_commerce_shop_youtube_url','' ) ); ?>"><i class="fa fa-youtube" aria-hidden="true"></i></a>
           <?php } ?>
-          <?php if(esc_url( get_theme_mod( 'tc_e_commerce_shop_facebook_url','' ) ) != '') { ?>
+          <?php if( get_theme_mod( 'tc_e_commerce_shop_facebook_url','' ) != '') { ?>
             <a href="<?php echo esc_url( get_theme_mod( 'tc_e_commerce_shop_facebook_url','' ) ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
           <?php } ?>
-          <?php if(esc_url( get_theme_mod( 'tc_e_commerce_shop_twitter_url','' ) ) != '') { ?>
+          <?php if( get_theme_mod( 'tc_e_commerce_shop_twitter_url','' ) != '') { ?>
             <a href="<?php echo esc_url( get_theme_mod( 'tc_e_commerce_shop_twitter_url','' ) ); ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
           <?php } ?>
-          <?php if(esc_url( get_theme_mod( 'tc_e_commerce_shop_rss_url','' ) ) != '') { ?>
+          <?php if( get_theme_mod( 'tc_e_commerce_shop_rss_url','' ) != '') { ?>
             <a href="<?php echo esc_url( get_theme_mod( 'tc_e_commerce_shop_rss_url','' ) ); ?>"><i class="fa fa-rss" aria-hidden="true"></i></a>
           <?php } ?>
         </div>

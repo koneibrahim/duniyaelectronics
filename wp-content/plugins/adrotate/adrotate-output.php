@@ -334,7 +334,7 @@ function adrotate_preview($banner_id) {
 
 		if($banner) {
 			$image = str_replace('%folder%', '/banners/', $banner->image);		
-			$output = adrotate_ad_output($banner->id, 0, $banner->title, $banner->bannercode, $banner->tracker, $image, 'N');
+			$output = adrotate_ad_output($banner->id, 0, $banner->title, $banner->bannercode, $banner->tracker, $image);
 		} else {
 			$output = adrotate_error('ad_expired');
 		}
@@ -380,6 +380,8 @@ function adrotate_ad_output($id, $group = 0, $name, $bannercode, $tracker, $imag
 			}
 		}
 	}
+
+	$image = apply_filters('adrotate_apply_photon', $image);
 
 	$banner_output = str_replace('%title%', $name, $banner_output);		
 	$banner_output = str_replace('%random%', rand(100000,999999), $banner_output);
@@ -623,6 +625,7 @@ function adrotate_dashboard_error() {
 	// Adverts
 	$status = get_option('adrotate_advert_status');
 	$adrotate_notifications	= get_option("adrotate_notifications");
+
 	if($adrotate_notifications['notification_dash'] == "Y") {
 		if($status['expired'] > 0 AND $adrotate_notifications['notification_dash_expired'] == "Y") {
 			$error['advert_expired'] = sprintf(_n('One advert is expired.', '%1$s adverts expired!', $status['expired'], 'adrotate'), $status['expired']).' <a href="'.admin_url('admin.php?page=adrotate-ads').'">'.__('Check adverts', 'adrotate').'</a>!';
@@ -636,11 +639,30 @@ function adrotate_dashboard_error() {
 	}
 
 	// Caching
+	if($adrotate_config['w3caching'] == "N" AND is_plugin_active('w3-total-cache/w3-total-cache.php')) {
+		$error['w3tc_active'] = __('You are using W3 Total Cache but W3 Total Cache support is not enabled. This may affect rotation of adverts, statistics and other dynamic elements in the plugin.', 'adrotate').' <a href="'.admin_url('/admin.php?page=adrotate-settings&tab=misc').'">'.__('Enable W3 Total Cache Support', 'adrotate').'</a>.';
+	}
 	if($adrotate_config['w3caching'] == "Y" AND !is_plugin_active('w3-total-cache/w3-total-cache.php')) {
-		$error['w3tc_not_active'] = __('You have enable caching support but W3 Total Cache is not active on your site!', 'adrotate').' <a href="'.admin_url('/admin.php?page=adrotate-settings&tab=misc').'">Disable Caching Support</a> or <a href="'.admin_url('/plugins.php').'">'.__('Enable W3 Total Cache', 'adrotate').'</a>.';
+		$error['w3tc_not_active'] = __('You have enabled caching support but W3 Total Cache is not active on your site!', 'adrotate').' <a href="'.admin_url('/admin.php?page=adrotate-settings&tab=misc').'">'.__('Disable W3 Total Cache Support', 'adrotate').'</a>.';
 	}
 	if($adrotate_config['w3caching'] == "Y" AND !defined('W3TC_DYNAMIC_SECURITY')) {
 		$error['w3tc_no_hash'] = __('You have enable caching support but the W3TC_DYNAMIC_SECURITY definition is not set.', 'adrotate').' <a href="'.admin_url('/admin.php?page=adrotate-settings&tab=misc').'">'.__('How to configure W3 Total Cache', 'adrotate').'</a>.';
+	}
+
+	if($adrotate_config['borlabscache'] == "N" AND is_plugin_active('borlabs-cache/borlabs-cache.php')) {
+		$error['borlabs_active'] = __('You are using Borlabs Cache but Borlabs Cache support is not enabled. This may affect rotation of adverts, statistics and other dynamic elements in the plugin.', 'adrotate').' <a href="'.admin_url('/admin.php?page=adrotate-settings&tab=misc').'">'.__('Enable Borlabs Cache Support', 'adrotate').'</a>.';
+	}
+	if($adrotate_config['borlabscache'] == "Y" AND !is_plugin_active('borlabs-cache/borlabs-cache.php')) {
+		$error['borlabs_not_active'] = __('You have enable caching support but Borlabs Cache is not active on your site!', 'adrotate').' <a href="'.admin_url('/admin.php?page=adrotate-settings&tab=misc').'">'.__('Disable Borlabs Cache Support', 'adrotate').'</a>.';
+	}
+	if(is_plugin_active('borlabs-cache/borlabs-cache.php')) {
+		$borlabscache = $borlabsphrase = '';
+		if(class_exists('\Borlabs\Factory')) {
+			$borlabscache = \Borlabs\Factory::get('Cache\Config')->get('fragmentCaching');
+		}
+		if($adrotate_config['borlabscache'] == "Y" AND $borlabscache == '') {
+			$error['borlabs_fragment_error'] = __('You have enabled Borlabs Cache support but Fragment caching is not enabled!', 'adrotate').' <a href="'.admin_url('/admin.php?page=borlabs-cache-fragments').'">'.__('Enable Fragment Caching', 'adrotate').'</a>.';
+		}
 	}
 
 	// Misc
@@ -791,44 +813,9 @@ function adrotate_help_info() {
         'id' => 'adrotate_thanks',
         'title' => 'Thank You',
         'content' => '<h4>Thank you for using AdRotate</h4><p>AdRotate is growing to be one of the most popular WordPress plugins for Advertising and is a household name for many companies around the world. AdRotate wouldn\'t be possible without your support and my life wouldn\'t be what it is today without your help.</p><p><em>- Arnan</em></p>'.
-        '<p><strong>Add me:</strong> <a href="https://www.facebook.com/Arnandegans/" target="_blank">Facebook</a>. <strong>Business:</strong> <a href="https://ajdg.solutions/?utm_campaign=homepage&utm_medium=helptab&utm_source=adrotate-free" target="_blank">ajdg.solutions</a> <strong>Blog:</strong> <a href="http://meandmymac.net/?utm_campaign=homepage&utm_medium=helptab&utm_source=adrotate-free" target="_blank">meandmymac.net</a>.</p>'
+        '<p><strong>Facebook:</strong> <a href="https://www.facebook.com/adegans/" target="_blank">Facebook</a>. <strong>Business:</strong> <a href="https://ajdg.solutions/" target="_blank">ajdg.solutions</a> <strong>Personal:</strong> <a href="http://www.arnan.me" target="_blank">arnan.me</a>.</p>'
 		)
     );
-}
-
-/*-------------------------------------------------------------
- Name:      adrotate_credits
- Purpose:   Promotional stuff shown throughout the plugin
- Since:		3.7
--------------------------------------------------------------*/
-function adrotate_credits() {
-	echo '<table class="widefat" style="margin-top: .5em">';
-
-	echo '<thead>';
-	echo '<tr valign="top">';
-	echo '	<th>'.__('Support AdRotate', 'adrotate').'</th>';
-	echo '	<th width="25%">'.__('Follow me on Facebook', 'adrotate').'</th>';
-	echo '</tr>';
-	echo '</thead>';
-
-	echo '<tbody>';
-	echo '<tr>';
-	echo '<td><a href="https://ajdg.solutions/products/adrotate-for-wordpress/?utm_campaign=adrotate-page&utm_medium=credits&utm_source=adrotate-free" title="AdRotate plugin for WordPress"><img src="'.plugins_url('/images/logo-60x60.png', __FILE__).'" alt="AdRotate logo" width="60" height="60" align="left" style="padding:0 5px 0 0;" /></a>'.__("Many users only think to review AdRotate when something goes wrong while thousands of people happily use AdRotate.", 'adrotate').' <strong>'. __("If you find AdRotate useful please leave your", 'adrotate').' <a href="https://wordpress.org/support/view/plugin-reviews/adrotate?rate=5#postform" target="_blank">'.__('rating','adrotate').'</a> '.__('and','adrotate').' <a href="https://wordpress.org/support/view/plugin-reviews/adrotate" target="_blank">'.__('review','adrotate').'</a> '.__('on WordPress.org to help AdRotate grow!', 'adrotate').'</strong></td>';
-
-	echo '<td><div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1534701246592586";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, \'script\', \'facebook-jssdk\'));</script>';
-	echo '<center><div class="fb-page" data-href="https://www.facebook.com/Arnandegans/" data-width="250" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"></div></center></td>';
-	echo '</tr>';
-	echo '</tbody>';
-
-	echo '</table>';
-	echo adrotate_trademark();
 }
 
 /*-------------------------------------------------------------
@@ -838,16 +825,5 @@ function adrotate_credits() {
 -------------------------------------------------------------*/
 function adrotate_trademark() {
 	return '<center><small>AdRotate<sup>&reg;</sup> is a registered trademark.</small></center>';
-}
-
-/*-------------------------------------------------------------
- Name:      adrotate_pro_notice
- Purpose:   Credits shown on user statistics
- Since:		3.8
--------------------------------------------------------------*/
-function adrotate_pro_notice($d = '') {
-
-	if($d == "t") echo __('Available in AdRotate Pro', 'adrotate').'. <a href="admin.php?page=adrotate-pro">'.__('More information...', 'adrotate').'</a>';
-	else echo __('This feature is available in AdRotate Pro', 'adrotate').'. <a href="admin.php?page=adrotate-pro">'.__('Learn more', 'adrotate').'</a>!';
 }
 ?>

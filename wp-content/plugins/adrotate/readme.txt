@@ -1,10 +1,10 @@
 === AdRotate Banner Manager ===
 Contributors: adegans
-Donate link: http://www.arnan.me/donate/?utm_campaign=donations&utm_medium=readme&utm_source=adrotate-free
+Donate link: http://www.arnan.me/#donate
 Tags: ad, advert, adsense, advertising, doubleclick, responsive, ad rotator, ad manager, banner manager, advert manager, analytics, advertisement,
 Requires at least: 3.8
-Tested up to: 4.8
-Stable tag: 4.7
+Tested up to: 4.9
+Stable tag: 4.9
 License: GPLv3
 
 Monetise your website with adverts while keeping things simple. Start making money today!
@@ -99,21 +99,27 @@ You can also post your questions on the [forum](https://ajdg.solutions/forums/?u
 Be a Professional and go Pro. With [AdRotate Professional](https://ajdg.solutions/plugins/adrotate-for-wordpress/?utm_campaign=adrotate-page&utm_medium=readme&utm_source=adrotate-free)!
 
 
-= 4.7 FREE =
-* [fix] Showing correct stats for adverts below graphs
-* [i18n] Added missing strings in dashboard notifications
-* [i18n] Corrected/included lots of missing strings
+= 4.9 FREE =
+* [new] Borlabs Cache support
+* [change] Dashboard notifications improved
+* [change] Dashboard updates and improvements
 
-= 4.10.1 PRO =
-* [i18n] Corrected/included some of missing strings
+= 4.11 PRO =
+* [new] Borlabs Cache support
+* [new] Google Analytics Global Tag support
+* [new] Support Jetpack Photon for certain advert assets
+* [new] FreegeoIP support for Geo Targeting
+* [change] Dashboard updates and improvements
+* [change] Dashboard notifications improved
+* [fix] Incorrect function call to advert preview when editing
 
 All recent changes are available on the [AdRotate website](https://ajdg.solutions/plugins/adrotate-for-wordpress/development/?utm_campaign=development&utm_medium=readme&utm_source=adrotate-free).
 
 == Upgrade Notice ==
 
-* [fix] Showing correct stats for adverts below graphs
-* [i18n] Added missing strings in dashboard notifications
-* [i18n] Corrected/included lots of missing strings
+* [new] Borlabs Cache support
+* [change] Dashboard notifications improved
+* [change] Dashboard updates and improvements
 
 == Screenshots ==
 

@@ -34,6 +34,10 @@
 		<td><label for="adrotate_w3caching"><input type="checkbox" name="adrotate_w3caching" <?php if($adrotate_config['w3caching'] == 'Y') { ?>checked="checked" <?php } ?> /> <?php _e('Check this box if you use W3 Total Caching on your site.', 'adrotate'); ?></label></td>
 	</tr>
 	<tr>
+		<th valign="top"><?php _e('Borlabs Cache', 'adrotate'); ?></th>
+		<td><label for="adrotate_borlabscache"><input type="checkbox" name="adrotate_borlabscache" <?php if($adrotate_config['borlabscache'] == 'Y') { ?>checked="checked" <?php } ?> /> <?php _e('Check this box if you use Borlabs Caching on your site.', 'adrotate'); ?></label></td>
+	</tr>
+	<tr>
 		<th valign="top">&nbsp;</th>
 		<td><span class="description"><?php _e('It may take a while for the ad to start rotating. The caching plugin needs to refresh the cache. This can take up to a week if not done manually.', 'adrotate'); ?> <?php _e('Caching support only works for [shortcodes] and the AdRotate Widget. If you use a PHP Snippet you need to wrap your PHP in the exclusion code yourself.', 'adrotate'); ?></span></td>
 	</tr>

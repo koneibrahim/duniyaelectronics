@@ -18,7 +18,7 @@ body{
   padding:0;
   -ms-word-wrap:break-word;
   word-wrap:break-word;
-  background-color:#000000;
+  background-color:#f1f1f1;
   font:12px/22px arial;
   color:#5b5b5b;
   font-family:Open sans;
@@ -631,7 +631,7 @@ span.call i,
   #header .nav ul.sub-menu li a:hover{background:#3890cb;
     color:#fff;
   }
-
+  
   #header .nav ul li a {
     color: #fff;
     padding: 20px 15px;
@@ -954,7 +954,7 @@ div.wpcf7-validation-errors {
   border-bottom: 3px double;
 }
 .footertown {
-    background: rgba(243, 9, 9, 0.85);
+    background: rgba(243, 9, 9, 0.85);  
 }
 #footer{
   background:#272727;
@@ -1118,7 +1118,7 @@ aside.widget.widget_calendar tr, aside.widget.widget_calendar td, aside.widget.w
 }
 aside.widget.widget_calendar td#today {
   background: #000;
-  color: #fff;
+  color: #fff;    
 }
 aside.widget.widget_calendar td#today a{
   color: #ffffff !important;
@@ -1785,7 +1785,7 @@ a.blog-more{
   float:left; /* Pagination float direction */
   font-weight:bold;width:100%;
 }
-
+ 
 .pagination span,
 .pagination a {
     display:block;
@@ -1802,7 +1802,7 @@ a.blog-more{
     -o-transition: background .15s ease-in-out;
     transition: background .15s ease-in-out;
 }
-
+ 
 .page-links span{
     display:block;
     float:right;
@@ -1818,13 +1818,13 @@ a.blog-more{
     -o-transition: background .15s ease-in-out;
     transition: background .15s ease-in-out;
 }
-
+ 
 .pagination a:hover,
 .page-links a:hover {
     color:#fff;
     background: rgba(243, 9, 9, 0.85); /* Pagination background on hover */
 }
-
+ 
 .pagination .current,
 .page-links .current{
   padding:10px 15px;
@@ -1847,7 +1847,7 @@ a.blog-more{
   line-height:normal;
 }
 
-@media screen and (max-width:991px)
+@media screen and (max-width:991px) 
 {
 	#slider .slide-cap h2{font-size:150%}
 	.day-time{
@@ -1894,7 +1894,7 @@ a.blog-more{
   textarea,
   .navigation-top,
   .social-navigation,
-  #secondary,
+  #secondary, 
   .content-bottom-widgets,
   .header-image,
   .panel-image-prop,

@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: AdRotate
-Plugin URI: https://ajdg.solutions/products/adrotate-for-wordpress/?utm_campaign=adrotate-page&utm_medium=plugin-info&utm_source=adrotate-free
+Plugin URI: https://ajdg.solutions/products/adrotate-for-wordpress/
 Author: Arnan de Gans
-Author URI: http://ajdg.solutions/?utm_campaign=homepage&utm_medium=plugin-info&utm_source=adrotate-free
+Author URI: http://www.arnan.me/
 Description: Monetise your website with adverts while keeping things simple. Start making money today!
 Text Domain: adrotate
 Domain Path: /languages/
-Version: 4.7
+Version: 4.9
 License: GPLv3
 */
 
@@ -22,7 +22,7 @@ License: GPLv3
 ------------------------------------------------------------------------------------ */
 
 /*--- AdRotate values ---------------------------------------*/
-define("ADROTATE_DISPLAY", '4.7');
+define("ADROTATE_DISPLAY", '4.9');
 define("ADROTATE_VERSION", 391);
 define("ADROTATE_DB_VERSION", 64);
 $plugin_folder = plugin_dir_path(__FILE__);
@@ -54,20 +54,22 @@ register_uninstall_hook(__FILE__, 'adrotate_uninstall');
 add_action('adrotate_evaluate_ads', 'adrotate_evaluate_ads');
 add_action('adrotate_empty_trackerdata', 'adrotate_empty_trackerdata');
 add_action('widgets_init', create_function('', 'return register_widget("adrotate_widgets");'));
+add_filter('adrotate_apply_photon','adrotate_apply_jetpack_photon');
 /*-----------------------------------------------------------*/
 
 /*--- Front end ---------------------------------------------*/
-if($adrotate_config['stats'] == 1){
-	add_action('wp_ajax_adrotate_impression', 'adrotate_impression_callback');
-	add_action('wp_ajax_nopriv_adrotate_impression', 'adrotate_impression_callback');
-	add_action('wp_ajax_adrotate_click', 'adrotate_click_callback');
-	add_action('wp_ajax_nopriv_adrotate_click', 'adrotate_click_callback');
-}
 if(!is_admin()) {
 	add_shortcode('adrotate', 'adrotate_shortcode');
 	add_action("wp_enqueue_scripts", 'adrotate_custom_scripts');
 	add_action('wp_head', 'adrotate_custom_css');
 	add_filter('the_content', 'adrotate_inject_posts', 12);
+}
+
+if($adrotate_config['stats'] == 1){
+	add_action('wp_ajax_adrotate_impression', 'adrotate_impression_callback');
+	add_action('wp_ajax_nopriv_adrotate_impression', 'adrotate_impression_callback');
+	add_action('wp_ajax_adrotate_click', 'adrotate_click_callback');
+	add_action('wp_ajax_nopriv_adrotate_click', 'adrotate_click_callback');
 }
 /*-----------------------------------------------------------*/
 
@@ -271,9 +273,9 @@ function adrotate_manage() {
 			include("dashboard/publisher/adverts-generator.php");
 		}
 		?>
-	<br class="clear" />
-
-	<?php adrotate_credits(); ?>
+		<br class="clear" />
+	
+		<?php echo adrotate_trademark(); ?>
 
 	</div>
 <?php
@@ -328,7 +330,7 @@ function adrotate_manage_group() {
 		?>
 		<br class="clear" />
 
-		<?php adrotate_credits(); ?>
+		<?php echo adrotate_trademark(); ?>
 
 	</div>
 <?php
@@ -353,9 +355,8 @@ function adrotate_manage_schedules() {
 
 		<br class="clear" />
 
-		<?php adrotate_credits(); ?>
+		<?php echo adrotate_trademark(); ?>
 
-		<br class="clear" />
 	</div>
 <?php
 }
@@ -411,9 +412,8 @@ function adrotate_statistics() {
 		?>
 		<br class="clear" />
 
-		<?php adrotate_credits(); ?>
+		<?php echo adrotate_trademark(); ?>
 
-		<br class="clear" />
 	</div>
 <?php
 }
@@ -451,9 +451,8 @@ function adrotate_manage_media() {
 
 		<br class="clear" />
 
-		<?php adrotate_credits(); ?>
+		<?php echo adrotate_trademark(); ?>
 
-		<br class="clear" />
 	</div>
 <?php
 }
@@ -534,6 +533,11 @@ function adrotate_options() {
 			include("dashboard/settings/license.php");						
 		}
 		?>
+
+		<br class="clear" />
+
+		<?php echo adrotate_trademark(); ?>
+
 	</div>
 <?php 
 }

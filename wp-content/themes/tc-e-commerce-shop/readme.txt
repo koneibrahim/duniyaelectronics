@@ -4,7 +4,7 @@
 
 Theme Name      :   TC E-Commerce Shop
 Theme URI       :   https://www.themescaliber.com/free/ecommerce-shop-wordpress-theme
-Version         :   0.3.3
+Version         :   0.3.4
 Tested up to    :   WP 4.9.1
 Author          :   ThemesCaliber
 Author URI      :   https://www.themescaliber.com
@@ -137,8 +137,13 @@ Version 0.3.2
 	-- The instructions on how to setup the home page should be part of the readme, or otherwise implemented for the end-user to see(you can add descriptions to the Customizer sections for example). Adding the instructions to the readme will be enough in general.
 
 Version 0.3.3
-	Tested Upto WordPress Version 4.9.1.
-	Done Styling Changes.
-	Remove Unwanted css code.
-	Added Hooks In Theme.
-	
+	-- Tested Upto WordPress Version 4.9.1.
+	-- Done Styling Changes.
+	-- Remove Unwanted css code.
+	-- Added Hooks In Theme.
+
+Version 0.3.4
+	-- Long Site Title and Site Description are handling properly. 
+	-- Removed the archive template part form index.php , search.php and archive.php.
+	-- Removed wp_reset_postdata(); form template-tag.php ex wp_get_attachment_image( $post->ID, $attachment_size ).
+	-- Removed in-line style code from custom-header.php.

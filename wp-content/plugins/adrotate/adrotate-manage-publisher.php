@@ -765,6 +765,7 @@ function adrotate_options_submit() {
 			$config['adminbar'] = (isset($_POST['adrotate_adminbar'])) ? 'Y' : 'N';
 			$config['hide_schedules'] = (isset($_POST['adrotate_hide_schedules'])) ? 'Y' : 'N';
 			$config['w3caching'] = (isset($_POST['adrotate_w3caching'])) ? 'Y' : 'N';
+			$config['borlabscache'] = (isset($_POST['adrotate_borlabscache'])) ? 'Y' : 'N';
 	
 			update_option('adrotate_config', $config);
 		}

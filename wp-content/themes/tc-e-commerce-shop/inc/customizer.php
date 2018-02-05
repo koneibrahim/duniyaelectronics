@@ -193,6 +193,25 @@ function tc_e_commerce_shop_customize_register( $wp_customize ) {
 			'type'     => 'dropdown-pages'
 		));
 	}
+
+	//Footer
+	$wp_customize->add_section('tc_e_commerce_shop_footer',array(
+		'title'	=> __('Footer Text','tc-e-commerce-shop'),
+		'description'=> __('This section will appear in the .','tc-e-commerce-shop'),
+		'panel' => 'tc_e_commerce_shop_panel_id',
+	));
+
+	$wp_customize->add_setting('tc_e_commerce_shop_footer_copy',array(
+		'default'=> '',
+		'sanitize_callback'	=> 'sanitize_text_field'
+	));
+	
+	$wp_customize->add_control('tc_e_commerce_shop_footer_copy',array(
+		'label'	=> __('Text','tc-e-commerce-shop'),
+		'section'=> 'tc_e_commerce_shop_footer',
+		'setting'=> 'tc_e_commerce_shop_footer_copy',
+		'type'=> 'text'
+	));	
 }
 add_action( 'customize_register', 'tc_e_commerce_shop_customize_register' );
 

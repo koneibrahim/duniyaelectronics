@@ -59,24 +59,10 @@ $partner = mt_rand(1,3);
 				<h3><?php _e('Arnan de Gans News & Updates', 'adrotate'); ?></h3>
 				<div class="postbox-ajdg">
 					<div class="inside">
-						<script>(function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0];
-							if (d.getElementById(id)) return;
-							js = d.createElement(s); js.id = id;
-							js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-							fjs.parentNode.insertBefore(js, fjs);
-							}(document, 'script', 'facebook-jssdk'));
-						</script>
-						<p><center><div class="fb-page" 
-							data-href="https://www.facebook.com/Arnandegans" 
-							data-width="490" 
-							data-adapt-container-width="true" 
-							data-hide-cover="false" 
-							data-show-facepile="false">
-						</div></center></p>
+						<p><center><a href="https://m.me/adegans" target="_blank" title="Connect with Arnan on Facebook"><img src="<?php echo plugins_url("/images/arnan-left.jpg", dirname(__FILE__)); ?>" alt="Connect with Arnan" /></a><a href="http://www.arnan.me" title="Visit Arnan's website"><img src="<?php echo plugins_url("/images/arnan-right.jpg", dirname(__FILE__)); ?>" alt="Arnan.me website" /></a></center></p>
 						<?php wp_widget_rss_output(array(
 							'url' => 'http://ajdg.solutions/feed/', 
-							'items' => 4, 
+							'items' => 3, 
 							'show_summary' => 1, 
 							'show_author' => 0, 
 							'show_date' => 1)
@@ -96,7 +82,7 @@ $partner = mt_rand(1,3);
 						<a href="https://ajdg.solutions/products/adrotate-for-wordpress/?pk_campaign=adrotate-free&pk_kwd=infopage"><img src="<?php echo plugins_url('/images/adrotate-product.png', dirname(__FILE__)); ?>" alt="adrotate-product" width="150" height="150" align="right" style="padding: 0 0 10px 10px;" /></a>
 						<p><h4><?php _e('Single License', 'adrotate'); ?> (&euro; 29.00)</h4><?php _e('One WordPress installation.', 'adrotate'); ?> <a href="https://ajdg.solutions/cart/?add-to-cart=1124&pk_campaign=adrotate-free&pk_kwd=single" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></p>
 						<p><h4><?php _e('Duo License', 'adrotate'); ?> (&euro; 39.00)</h4><?php _e('Two WordPress installations.', 'adrotate'); ?> <a href="https://ajdg.solutions/cart/?add-to-cart=1126&pk_campaign=adrotate-free&pk_kwd=duo" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></p>
-						<p><h4><?php _e('Multi License', 'adrotate'); ?> (&euro; 89.00)</h4><?php _e('Up to five WordPress installations.', 'adrotate'); ?> <a href="https://ajdg.solutions/cart/?add-to-cart=1128&pk_campaign=adrotate-free&pk_kwd=multi" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></p>
+						<p><h4><?php _e('Multi License', 'adrotate'); ?> (&euro; 89.00)</h4><?php _e('Five WordPress installations.', 'adrotate'); ?> <a href="https://ajdg.solutions/cart/?add-to-cart=1128&pk_campaign=adrotate-free&pk_kwd=multi" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></p>
 						<p><h4><?php _e('Developer License', 'adrotate'); ?> (&euro; 199.00)</h4><?php _e('Unlimited WordPress installations and/or networks.', 'adrotate'); ?> <a href="https://ajdg.solutions/cart/?add-to-cart=1130&pk_campaign=adrotate-free&pk_kwd=developer" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></p>
 						<p><h4><?php _e('Compare licenses', 'adrotate'); ?></h4> <?php _e('Not sure which license is for you? Compare them...', 'adrotate'); ?> <a href="https://ajdg.solutions/products/adrotate-for-wordpress/?pk_campaign=adrotate-free&pk_kwd=compare" target="_blank"><?php _e('All Licenses', 'adrotate'); ?> &raquo;</a></p>
 <!--
@@ -143,5 +129,7 @@ $partner = mt_rand(1,3);
 	</div>
 
 	<div class="clear"></div>
+
 	<p><?php echo adrotate_trademark(); ?></p>
+
 </div>

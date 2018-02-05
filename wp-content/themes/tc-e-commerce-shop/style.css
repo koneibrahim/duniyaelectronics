@@ -4,7 +4,7 @@ Theme URI: https://www.themescaliber.com/free/ecommerce-shop-wordpress-theme
 Author: ThemesCaliber
 Author URI: https://www.themescaliber.com/
 Description: TC ECommerce Shop WordPress Theme is the ultimate solution to create multipurpose online stores such as online book store, sports store, electronic items store, mobile & tablet store, apparel store, fashion store, cosmetics shop, handbags store, medical stores, jewelry store, etc. It also covers different businesses including travel, technology, construction, digitals, design, product showcase, furniture, restaurant, corporate companies, agencies, bloggers, etc. It’s built on Bootstrap which makes it a perfect base to sell out eCommerce items. This clean multipurpose WooCommerce WordPress Theme offers extensive functionality to sell different products in a fabulous manner. The mobile friendly nature of this theme gives an amazing viewing experience to the visitors. It is built up of awesome features such as banners, call to action buttons, sidebars, testimonial section, shortcodes, and a lot more. The theme is developed using optimized codes that help in providing faster page load time each time a visitor browses your site. This customizable responsive WooCommerce WordPress theme offers various personalization options to ease the task of website development. The integrated social media features make this multipurpose theme highly interactive on social sites. Its SEO friendly nature gives enhanced performance and better ranking of your site on search engines. With dozens of customizable options, this user-friendly theme makes a perfect fit for your professional eCommerce website. TC multipurpose eCommerce WordPress theme is all that you need to leave your mark in the world of eCommerce! Check demo at: https://www.themescaliber.com/tc-e-commerce-shop/
-Version: 0.3.3
+Version: 0.3.4
 License: GNU General Public License
 License URI: license.txt
 Text Domain: tc-e-commerce-shop
@@ -25,9 +25,9 @@ body{
   padding:0;
   -ms-word-wrap:break-word;
   word-wrap:break-word;
-  background-color: #ffffff;
-  font:14px/22px Loma;
-  color:#ffffff;
+  background-color:#f1f1f1;
+  font:12px/22px arial;
+  color:#5b5b5b;
   font-family:Open sans;
 }
 img{
@@ -124,7 +124,7 @@ input[type='submit']:hover{
 }
 .inner-service{
   background-color: #ffffff;
-}
+} 
 .tag-sticky-2 .postbox {
   background: transparent;
 }
@@ -185,7 +185,7 @@ small{
 }
 
 a.small-button{
-  background:#000000;
+  background:#3890cb;
   padding:5px 30px;
   border-radius:3px;
   color:#fff;
@@ -194,7 +194,7 @@ a.small-button{
 }
 a.small-button:hover{
   color:#fff;
-  background:#000000;
+  background:#0c5f96;
 }
 
 input[type="text"],
@@ -375,7 +375,7 @@ a.button{
 }
 .email i,.call i {
     margin-right: 6px;
-}
+} 
 .baricon i {
   color: #fff;
   margin-left: 2%;
@@ -415,14 +415,14 @@ a.button{
 }
 #header .nav ul li a:hover{
   color:rgba(243, 9, 9, 0.85);
-  border-bottom: solid 4px rgba(60,179,130,0.85);
+  border-bottom: solid 4px rgba(243, 9, 9, 0.85);
 }
 #header .nav ul li a:active,
 #header .nav ul li a:focus{
-  color: rgba(243, 9, 9, 0.95);
+  color: rgba(243, 9, 9, 0.85);
 }
 #header .nav ul .current-menu-item a {
-  color: rgba(243, 9, 9, 0.95) !important;
+  color: rgba(243, 9, 9, 0.85) !important;
 }
 #header .nav ul ul {
   margin:5% 0 0 0;
@@ -585,94 +585,6 @@ section h5{
 a.r_button {
   padding: 0.5em 2em;
   color: #e64f64;
-}
-
-section{
-  font-family:Open sans;
-}
-section .innerlightbox{
-  background-size:100% 100%;
-  padding:2.5em 0 0 0;
-  color:#000;
-}
-section .innerdarkbox{
-  background-size:100% 100%;
-  padding:4.5em 0;
-  color:#fff;
-}
-
-/* Newsletter Section */
-#newsletter-box input[type="text"]{
-  margin:0;
-}
-#newsletter-box input[type="submit"] {
-  margin:0;
-  background:#4c66ba;
-  border:2px solid #fff;
-  border-radius:3px;
-  color:#fff;
-}
-#newsletter-box input[type="submit"]:hover{
-  background:#3791cc;
-}
-
-/* Contact Section */
-#contact-box{
-  background:#f4f5f9;
-}
-.contact-innerbox{
-  background:#fff;
-  padding:30px;
-  box-shadow:5px 5px #eee;
-  margin:0 0 20px 0;
-}
-#contact-box .contact-form-box label{
-  width:100%;
-}
-#contact-box .contact-form-box p{
-  font-size:14px;
-  font-weight:bold;
-  color:#000;
-}
-
-#contact-box .address-box p{
-  margin:0 0 50px;
-  color:#999999;
-}
-#contact-box .social-icons{
-  margin-top:15px;
-}
-#contact-box .social-icons a{
-  color:#000;
-  padding:5px 10px;
-}
-#contact-box .social-icons a:hover{
-  background:#3890cb;
-  color:#fff;
-}
-
-#contact-box .mapbox{
-  box-shadow:5px 5px #eee;
-}
-
-#contact-box .contact-form-box input[type="text"],
-#contact-box .contact-form-box input[type="email"],
-#contact-box .contact-form-box input[type="phno"],
-#contact-box .contact-form-box textarea
-{border:none; border-bottom:1px solid #999999;
-  padding:4px 0 5px 0;
-  width:100%;color:#000;margin:0 0 15px;
-  font-size:14px;
-}
-#contact-box .contact-form-box textarea{
-  height:50px;
-}
-#contact-box .contact-form-box input[type="submit"]{
-  margin-top:20px;
-}
-div.wpcf7-validation-errors {
-  border: 2px solid #f7e700;
-  clear: both;
 }
 
 /* Footer Section */
@@ -868,7 +780,7 @@ aside.widget.widget_calendar tr, aside.widget.widget_calendar td, aside.widget.w
 }
 aside.widget.widget_calendar td#today {
   background: #000;
-  color: #fff;
+  color: #fff;    
 }
 aside.widget.widget_calendar td#today a{
   color: #ffffff !important;
@@ -1325,7 +1237,7 @@ a.blog-more{
   float:right; /* Pagination float direction */
   font-weight:bold;width:100%;
 }
-
+ 
 .pagination span,
 .pagination a {
     display:block;
@@ -1342,7 +1254,7 @@ a.blog-more{
     -o-transition: background .15s ease-in-out;
     transition: background .15s ease-in-out;
 }
-
+ 
 .page-links span{
     display:block;
     float:left;
@@ -1358,13 +1270,13 @@ a.blog-more{
     -o-transition: background .15s ease-in-out;
     transition: background .15s ease-in-out;
 }
-
+ 
 .pagination a:hover,
 .page-links a:hover {
     color:#fff;
     background: rgba(243, 9, 9, 0.85); /* Pagination background on hover */
 }
-
+ 
 .pagination .current,
 .page-links .current{
   padding:10px 15px;
@@ -1518,7 +1430,7 @@ a.blog-more{
     background:#333;
     color:#fff;
   }
-
+  
   #header .nav ul li a {
     color: #000;
     padding: 10px;
@@ -1542,17 +1454,6 @@ a.blog-more{
     border-bottom:1px #313131 solid;
   }
 }
-@media screen and (max-width:991px){
-	#slider .slide-cap h2{font-size:150%}
-	.day-time{
-    border-bottom: 1px solid #fff;
-    margin-bottom: 15px;
-    padding-bottom: 20px;
-  }
-  h3.navigate {
-    padding: 1em 0 !important;
-  }
-}
 @media screen and (max-width: 991px){
   .ecommerceshop .box-image {
     margin: 0 0 25px 0;
@@ -1568,6 +1469,10 @@ a.blog-more{
    .fonts {
     margin-bottom: 5%;
   }
+  #slider .slide-cap h2{font-size:150%}
+  h3.navigate {
+    padding: 1em 0 !important;
+  }
 }
 @media print {
 
@@ -1580,7 +1485,7 @@ a.blog-more{
   textarea,
   .navigation-top,
   .social-navigation,
-  #secondary,
+  #secondary, 
   .content-bottom-widgets,
   .header-image,
   .panel-image-prop,

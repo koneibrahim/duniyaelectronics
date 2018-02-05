@@ -202,7 +202,6 @@ function adrotate_stats_graph($type, $archive = false, $id, $chartid, $start, $e
 	}
 
 	if($stats) {
-/* -- Add in 4.7 or so -- //
 		$dates = $clicks = $impressions = '';
 
 		foreach($stats as $result) {
@@ -213,42 +212,6 @@ function adrotate_stats_graph($type, $archive = false, $id, $chartid, $start, $e
 			$clicks .= ','.$result['clicks'];
 			$impressions .= ','.$result['impressions'];
 		}
-// -- End Add -- */
-
-// -- Remove in 4.7 or so -- //
-		$dates = $clicks = $impressions = ''; // To store the final graph data
-		$day_start = $start; // Midnight of the day (start)
-		$day_end = $day_start + 86399; // 1 second before midnight of the next day
-
-		$i = 0;
-		foreach($stats as $result) {
-			if(empty($result['clicks'])) $result['clicks'] = '0';
-			if(empty($result['impressions'])) $result['impressions'] = '0';
-
-			// Convert hourly stats into daily stats
-			if($result['thetime'] >= $day_start AND $result['thetime'] <= $day_end) {
-				if(empty($graph[$i]['clicks'])) $graph[$i]['clicks'] = '0';
-				if(empty($graph[$i]['impressions'])) $graph[$i]['impressions'] = '0';
-
-				$sum_clicks = $graph[$i]['clicks'] + $result['clicks'];
-				$sum_impressions = $graph[$i]['impressions'] + $result['impressions'];
-			} else {
-				$day_start = $result['thetime'];
-				$day_end = $day_start + 86399;
-				$sum_clicks = $result['clicks'];
-				$sum_impressions = $result['impressions'];
-				$i++;
-			}
-			$graph[$i] = array('thetime' => $day_start, 'clicks' => $sum_clicks, 'impressions' => $sum_impressions);
-			unset($sum_clicks, $sum_impressions);
-		}
-
-		foreach($graph as $result) {
-			$dates .= ',"'.date_i18n("d M", $result['thetime']).'"';
-			$clicks .= ','.$result['clicks'];
-			$impressions .= ','.$result['impressions'];
-		}
-// -- End Remove -- //
 
 		$dates = trim($dates, ",");
 		$clicks = trim($clicks, ",");

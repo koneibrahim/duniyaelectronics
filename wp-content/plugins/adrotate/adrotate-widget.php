@@ -58,6 +58,22 @@ class adrotate_widgets extends WP_Widget {
 				echo 'echo adrotate_group('.$instance['adid'].', 0, 0, 0);';
 			}
 			echo '<!-- /mfunc '.W3TC_DYNAMIC_SECURITY.' -->';
+		} else if($adrotate_config['borlabscache'] == 'Y') {
+		    if(class_exists('\Borlabs\Factory')) {
+	            $borlabsphrase = \Borlabs\Factory::get('Cache\Config')->get('fragmentCachingMaskPhrase');
+	
+				echo '<!--[borlabs cache start: '.$borlabsphrase.']-->';
+				if($instance['type'] == "single") {
+					echo adrotate_ad($instance['adid'], true, 0, 0, 0);
+				}
+		
+				if($instance['type'] == "group") {
+					echo adrotate_group($instance['adid'], 0, 0, 0);
+				}
+				echo '<!--[borlabs cache end: '.$borlabsphrase.']-->';
+			} else {
+				$output .= '<!-- Borlabs Cache does not appear to be active -->';
+			}
 		} else {
 			if($instance['type'] == "single") {
 				echo adrotate_ad($instance['adid'], true, 0, 0, 0);
